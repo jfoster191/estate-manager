@@ -1,3 +1,3 @@
-# MERN-stack Infrastructure
+# Estate Manager
 
-Clone this repo to provide the starter code for a comprehensive MERN-stack project including token-based authentication.
+This web application is used to manage rental properties.
