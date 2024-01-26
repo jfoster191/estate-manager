@@ -1,6 +1,6 @@
 import * as userServies from '../../utilities/users-services'
 
-export default function OrderHistoryPage() {
+export default function DashboardPage() {
   async function handleCheckToken(){
     const expDate = await userServies.checkToken()
     console.log(expDate)
@@ -8,7 +8,7 @@ export default function OrderHistoryPage() {
 
   return(
     <>
-    <h1>Order History Page</h1>
+    <h1>Dashboard Page</h1>
     <button onClick={handleCheckToken}>Check WHen My Login Expires</button>
     </>
   ) 

@@ -35,20 +35,28 @@ export default function SignUpFormFunc ({setUser}){
   
   return (
     <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Name</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-          <label>Email</label>
-          <input type="email" name="email" value={formData.email}  onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-          <label>Confirm</label>
-          <input type="password" name="confirm" value={formData.confirm} onChange={handleChange} required />
-          <button type="submit" disabled={disable}>SIGN UP</button>
+      <div className="bg-white border border-grey shadow-md rounded p-2">
+        <form className="flex flex-col gap-1" autoComplete="off" onSubmit={handleSubmit}>
+          <div>
+            <label className="text-smokeyTopaz text-xl p-2">Name</label>
+            <input className="border border-grey rounded" type="text" name="name" value={formData.name} onChange={handleChange} required />
+          </div>
+          <div>
+            <label className="text-smokeyTopaz text-xl p-2">Email</label>
+            <input className="border border-grey rounded"  type="email" name="email" value={formData.email}  onChange={handleChange} required />
+          </div>
+          <div>
+            <label className="text-smokeyTopaz text-xl p-2">Password</label>
+            <input className="border border-grey rounded"  type="password" name="password" value={formData.password} onChange={handleChange} required />
+          </div>
+          <div>
+            <label className="text-smokeyTopaz text-xl p-2">Confirm</label>
+            <input className="border border-grey rounded"  type="password" name="confirm" value={formData.confirm} onChange={handleChange} required />
+          </div>
+          <button className="text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" disabled={disable}>SIGN UP</button>
         </form>
+        <p className="error-message">&nbsp;{formData.error}</p>
       </div>
-      <p className="error-message">&nbsp;{formData.error}</p>
     </div>
   )
 }
