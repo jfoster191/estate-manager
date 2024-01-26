@@ -42,10 +42,11 @@ const serviceSchema = new Schema({
 })
 
 const unitSchema = new Schema({
-  leaseStart: {type: Date, required: true},
-  leaseEnd: {type: Date, required: true},
+  leaseStart: Date,
+  leaseEnd: Date,
   leaseFile: String,
   unitNum: {type: String, required: true},
+  occupied: {type: Boolean, required: true, default: false},
   tenants: [tenantSchema],
   service: [serviceSchema],
   rent: [rentSchema],

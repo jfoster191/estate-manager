@@ -1,6 +1,7 @@
 import { useState } from "react"
 import AddUnitForm from "../AddUnitForm/AddUnitForm"
 
+
 export default function AddPropertyForm (){
   const [formData, setFormData] = useState({
     street: '',
@@ -12,15 +13,22 @@ export default function AddPropertyForm (){
 
   let [unitNum, setUnitNum] = useState([])
 
-  function handleChange(evt){
+  function handleChange(evt){ 
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
       error: ''
     })
     if(evt.target.name === 'numOfUnits'){
-      for(let i=0;i<evt.target.value;i++){
-        unitNum.push(i)
+      if(unitNum.length > 0){
+        unitNum = []
+        for(let i=0;i<evt.target.value;i++){
+          unitNum.push(i)
+        }
+      } else {
+        for(let i=0;i<evt.target.value;i++){
+          unitNum.push(i)
+        }
       }
       setUnitNum(unitNum)
     }
@@ -129,16 +137,16 @@ export default function AddPropertyForm (){
             </select>
           </div>
 
-          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">ADD PROPERTY</button>
 
           {unitNum.length > 0 ?
             unitNum.map((unit) => (
               <AddUnitForm />
-            ))
-            :
-            null
-          }
+              ))
+              :
+              null
+            }
 
+            <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">ADD PROPERTY</button>
         </form>
         <p className="error-message">&nbsp;{formData.error}</p>
       </div>
