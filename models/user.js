@@ -6,12 +6,17 @@ const SALT_ROUNDS = 6
 
 const userSchema = new Schema({
   name: {type: String, required: true},
+  phone: {
+    type: String, 
+    match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/
+  },
   email: {
     type: String,
     unique: true,
     trim: true,
     lowercase: true,
-    required: true
+    required: true,
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
   },
   password: {
     type: String,
