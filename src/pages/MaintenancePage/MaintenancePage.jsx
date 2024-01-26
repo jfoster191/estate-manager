@@ -1,5 +1,5 @@
 export default function MaintenancePage(){
   return (
-    <h1>Maintenance Page</h1>
+    <h1 className='text-3xl font-bold'>Maintenance Page</h1>
   )
 }

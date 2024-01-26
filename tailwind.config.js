@@ -5,13 +5,16 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'floralWhite': '#FFFDFA',
+      'hunter': '#FFF3E6',
       'smokeyTopaz': '#8f250c',
-      'linen': '#FFF3E6',
+      'linen': '#E8DDD1',
       'grey': '#D9D9D9',
-      'slate': '#3f3f46'
+      'slate': '#3f3f46',
+      'white': '#FFFFFF'
     },
-    extend: {},
+    extend: {
+      display: ["group-hover"]
+    },
   },
   plugins: [],
   // darkMode: 'media',

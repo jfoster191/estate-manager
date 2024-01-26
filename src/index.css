@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /* CSS Custom Properties
 :root {
   --white: #FFFFFF;

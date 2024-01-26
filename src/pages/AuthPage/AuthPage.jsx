@@ -17,7 +17,7 @@ export default function AuthPage({setUser, user}) {
         <img className="w-64 p-2 mb-0" src="https://i.imgur.com/EKvTAFn.png" alt="EM-Logo" />
       </div></h1>
       <div className="flex justify-center items-center mt-24 gap-14">
-        <div className="border rounded border-grey flex flex-col p-10 text-3xl gap-2 shadow-lg">
+        <div className="border bg-white rounded border-grey flex flex-col p-10 text-3xl gap-2 shadow-lg">
           <div>Manage your mayh<span className="text-smokeyTopaz">EM</span></div>
           <div>Predict a probl<span className="text-smokeyTopaz">EM</span></div>
           <div>Estates with este<span className="text-smokeyTopaz">EM</span></div>

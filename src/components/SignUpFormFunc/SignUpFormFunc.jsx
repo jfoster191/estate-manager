@@ -53,7 +53,7 @@ export default function SignUpFormFunc ({setUser}){
             <label className="text-smokeyTopaz text-xl p-2">Confirm</label>
             <input className="border border-grey rounded"  type="password" name="confirm" value={formData.confirm} onChange={handleChange} required />
           </div>
-          <button className="text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" disabled={disable}>SIGN UP</button>
+          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" disabled={disable}>SIGN UP</button>
         </form>
         <p className="error-message">&nbsp;{formData.error}</p>
       </div>
