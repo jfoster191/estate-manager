@@ -81,7 +81,7 @@ const maintenanceSchema = new Schema({
 })
 
 const propertySchema = new Schema({
-  mortgage: Number,
+  mortgage: {type: Number, match: [/^\d+(\.\d{2})?$/]},
   address: addressSchema,
   units: [unitSchema],
   maintenanceRequests: [maintenanceSchema],

@@ -13,7 +13,7 @@ module.exports = {
       'white': '#FFFFFF'
     },
     extend: {
-      display: ["group-hover"]
+      display: ["group-hover", "group-click"]
     },
   },
   plugins: [],

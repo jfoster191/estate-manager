@@ -16,15 +16,15 @@ export default function NavBar({user, setUser}) {
 
         <div class="dropdown relative inline-block group-hover:block">
           <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white'>Properties</Link>
-          <div class="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-40">
+          <div class="dropdown-content right-0 hidden absolute bg-white shadow-sm rounded w-60 mt-4">
             <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/properties'>All Properties</Link><br />
-            <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0'>Add Property</Link>
+            <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/manage-properties'>Manage Properties</Link>
           </div>
         </div>
 
         <div class="dropdown relative inline-block group-hover:block">
           <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white'>Maintenance</Link>
-          <div class="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60">
+          <div class="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60 mt-4">
             <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/maintenance'>All Maintenance Items</Link><br />
             <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0'>Add Maintenance Items</Link>
           </div>
@@ -32,7 +32,7 @@ export default function NavBar({user, setUser}) {
 
         <div class="dropdown relative inline-block group-hover:block">
           <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white'>Service Request</Link>
-          <div class="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60">
+          <div class="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60 mt-4">
             <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/service'>All Service Request</Link><br />
             <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0'>Add Service Request</Link>
           </div>

@@ -4,6 +4,7 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import PropertiesPage from '../PropertiesPage/PropertiesPage';
+import ManagePropertiesPage from '../ManagePropertiesPage/ManagePropertiesPage';
 import MaintenancePage from '../MaintenancePage/MaintenancePage';
 import ServicePage from '../ServicePage/ServicePage'
 import NavBar from '../../components/NavBar/NavBar';
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='/properties' element={<PropertiesPage />} />
+          <Route path='/manage-properties' element={<ManagePropertiesPage />} />
           <Route path='/maintenance' element={<MaintenancePage />} />
           <Route path='/service' element={<ServicePage />} />
         </Routes>
