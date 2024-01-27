@@ -1,16 +1,17 @@
 import { useState } from "react"
 import AddUnitForm from "../AddUnitForm/AddUnitForm"
+import * as propertiesAPI from "../../utilities/properties-api"
 
 
-export default function AddPropertyForm (){
+export default function AddPropertyForm ({setUnitNums, setCurrentProperty}){
+
   const [formData, setFormData] = useState({
     street: '',
     city: '',
     zip: null,
-    mortage: null,
+    mortgage: null,
     numOfUnits: null,
   })
-
   let [unitNum, setUnitNum] = useState([])
 
   function handleChange(evt){ 
@@ -30,12 +31,17 @@ export default function AddPropertyForm (){
           unitNum.push(i)
         }
       }
-      setUnitNum(unitNum)
     }
   }
-
+  
   async function handleSubmit(evt){
     evt.preventDefault();
+    const property = await propertiesAPI.addProperty(formData)
+    setCurrentProperty(property._id)
+  }
+
+  function handleBtnClick(){
+    setUnitNums(unitNum)
   }
   
   return (
@@ -58,6 +64,7 @@ export default function AddPropertyForm (){
           <div>
             <label className="text-smokeyTopaz text-xl p-2">State</label>
             <select className="border border-grey rounded" type="enum" name="state" value={formData.state} onChange={handleChange} required>
+              <option value="" selected>Select</option>
               <option value="Alabama">Alabama</option>
               <option value="Alaska">Alaska</option>
               <option value="Arizona">Arizona</option>
@@ -135,18 +142,9 @@ export default function AddPropertyForm (){
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
-          </div>
+          </div><br />
 
-
-          {unitNum.length > 0 ?
-            unitNum.map((unit) => (
-              <AddUnitForm />
-              ))
-              :
-              null
-            }
-
-            <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">ADD PROPERTY</button>
+            <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleBtnClick}>&#8594;&#8594; NEXT &#8594;&#8594;</button>
         </form>
         <p className="error-message">&nbsp;{formData.error}</p>
       </div>

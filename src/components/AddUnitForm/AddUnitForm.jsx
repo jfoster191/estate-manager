@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { render } from "@testing-library/react";
 import DatepickerR from "react-tailwindcss-datepicker";
 import RentForm from '../RentForm/RentForm';
+import * as unitsAPI from '../../utilities/units-api';
 
-export default function AddUnitForm (){
+export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx, currentProperty}){  
   const [formData, setFormData] = useState({
     occupied: false,
     unitNum: '',
     dates: null,
-    mortage: null,
-    numOfUnits: null,
+    file: null,
+    currentProperty: null
   })
 
   const [value, setValue] = useState({
@@ -17,7 +17,7 @@ export default function AddUnitForm (){
     endDate: null, //new Date().setMonth(11)
   });
   const handleValueChange = newValue => {
-    console.log("newValue:", newValue);
+    //console.log("newValue:", newValue);
     setValue(newValue);
   };
   
@@ -25,17 +25,26 @@ export default function AddUnitForm (){
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
-      error: ''
+      dates: value,
+      currentProperty: currentProperty,
+      error: '',
     })
   }
 
   async function handleSubmit(evt){
     evt.preventDefault();
+    await unitsAPI.addUnit(formData);
+  }
+
+  async function handleBtnClick(evt){
+    evt.preventDefault();
+    setCurrentPage(currentPage+1)
+    await unitsAPI.addUnit(formData);
   }
 
   return (
       <div className="bg-white border border-smokeyTopaz shadow-md rounded p-2">
-        <h1 className="text-xl text-smokeyTopaz font-bold pb-2">+ Add Unit +</h1>
+        <h1 className="text-xl text-smokeyTopaz font-bold pb-2">+ Add Unit {idx+1}+</h1>
         <hr />
         <form className="flex flex-col gap-1 pt-3" autoComplete="off" onSubmit={handleSubmit}>
           <div>
@@ -54,7 +63,6 @@ export default function AddUnitForm (){
           <div className="text-smokeyTopaz text-xl">Lease Period</div>
             <div>
               <DatepickerR
-              name={formData.dates} 
               primaryColor={"red"} 
               value={value} 
               onChange={handleValueChange}
@@ -63,10 +71,12 @@ export default function AddUnitForm (){
 
             <div>
               <label className="text-smokeyTopaz text-xl p-2">Lease File</label>
-              <input className="border border-grey rounded" type="file" name="zip" value={formData.zip} onChange={handleChange} required />
+              <input className="border border-grey rounded" type="file" name="file" value={formData.file} onChange={handleChange} />
             </div>
 
             <RentForm />
+
+            <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleBtnClick}>&#8594;&#8594; NEXT &#8594;&#8594;</button>
 
         </form>
         <p className="error-message">&nbsp;{formData.error}</p>

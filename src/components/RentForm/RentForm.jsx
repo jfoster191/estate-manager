@@ -5,14 +5,11 @@ import DatepickerR from "react-tailwindcss-datepicker";
 
 export default function RentForm (){
   const [formData, setFormData] = useState({
-    occupied: false,
-    unitNum: '',
-    dates: null,
-    mortage: null,
-    numOfUnits: null,
+    amount: '',
+    dueDate: null,
   })
 
-  const [value, setValue] = useState({
+  const [value2, setValue] = useState({
     startDate: null, //new Date(),
     endDate: null, //new Date().setMonth(11)
   });
@@ -25,6 +22,7 @@ export default function RentForm (){
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
+      dueDate: value2,
       error: ''
     })
   }
@@ -40,7 +38,7 @@ export default function RentForm (){
 
           <div>
             <label className="text-smokeyTopaz text-xl p-2">Rent Amount</label>
-            <input placeholder='Enter Value: 00.00' className="border border-grey rounded" type="text" name="unitNum" value={formData.unitNum} onChange={handleChange} required />
+            <input placeholder='Enter Value: 00.00' className="border border-grey rounded" type="text" name="amount" value={formData.amount} onChange={handleChange} required />
           </div><hr />
 
           <div className="text-smokeyTopaz text-xl">Due Date</div>
@@ -50,7 +48,7 @@ export default function RentForm (){
               asSingle={true}
               name={formData.dates} 
               primaryColor={"red"} 
-              value={value} 
+              value={value2} 
               onChange={handleValueChange}
               />
           </div>
