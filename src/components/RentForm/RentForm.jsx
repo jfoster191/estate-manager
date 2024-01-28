@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import DatepickerR from "react-tailwindcss-datepicker";
 
 
-export default function RentForm (){
+export default function RentForm ({setRentData}){
   const [formData, setFormData] = useState({
     amount: '',
     dueDate: null,
@@ -25,6 +25,7 @@ export default function RentForm (){
       dueDate: value2,
       error: ''
     })
+    setRentData(formData)
   }
 
   async function handleSubmit(evt){
@@ -34,7 +35,7 @@ export default function RentForm (){
   return (
       <div className="bg-white border border-grey shadow-md rounded p-2">
         <h1 className="text-xl text-smokeyTopaz pb-2">Rent Info</h1>
-        <form className="flex flex-col gap-1" autoComplete="off" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-1" autoComplete="off" /*onSubmit={handleSubmit}*/>
 
           <div>
             <label className="text-smokeyTopaz text-xl p-2">Rent Amount</label>

@@ -18,9 +18,9 @@ const tenantSchema = new Schema({
 })
 
 const rentSchema = new Schema({
-  amount: {type: Number, required: true, match: [/^\d+(\.\d{2})?$/]},
+  amount: {type: Number, required: true},
   dueDate: {type: Date, required: true},
-  datePaid: {type: Date, required: true},
+  datePaid: {type: Date},
   isPaid: {type: Boolean, default: false},
 }, {
   timestamps: true
@@ -45,6 +45,8 @@ const unitSchema = new Schema({
   leaseStart: Date,
   leaseEnd: Date,
   leaseFile: String,
+  amount: {type: Number},
+  dueDay: {type: Number},
   unitNum: {type: String, required: true},
   occupied: {type: Boolean, required: true, default: false},
   tenants: [tenantSchema],

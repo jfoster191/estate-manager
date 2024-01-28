@@ -9,10 +9,10 @@ export default function DashboardPage() {
   }
 
   return(
-    <div>
+    <div className=''>
       <h1 className='text-3xl font-bold'>Dashboard</h1>
-      <div className="flex">
-        <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-1/3 ml-6 mt-6">
+      <div className="flex h-100">
+        <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-1/3 ml-6 mt-6 h-[90%]">
           <PropertiesList />
         </aside>
         <div className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-2/3 m-6">

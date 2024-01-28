@@ -9,8 +9,15 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
     unitNum: '',
     dates: null,
     file: null,
-    currentProperty: null
+    currentProperty: null,
+    amount: '',
+    dueDate: null
   })
+
+  // const [rentData, setRentData] = useState({
+  //   amount: '',
+  //   dueDate: null,
+  // })
 
   const [value, setValue] = useState({
     startDate: null, //new Date(),
@@ -20,6 +27,15 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
     //console.log("newValue:", newValue);
     setValue(newValue);
   };
+
+  // const [value2, setValue2] = useState({
+  //   startDate2: null, //new Date(),
+  //   endDate2: null, //new Date().setMonth(11)
+  // });
+  // const handleValueChange2 = newValue2 => {
+  //   console.log("newValue2:", newValue2);
+  //   setValue2(newValue2);
+  // };
   
   function handleChange(evt){
     setFormData({
@@ -33,14 +49,15 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
 
   async function handleSubmit(evt){
     evt.preventDefault();
-    await unitsAPI.addUnit(formData);
-  }
-
-  async function handleBtnClick(evt){
-    evt.preventDefault();
     setCurrentPage(currentPage+1)
     await unitsAPI.addUnit(formData);
   }
+
+  // async function handleBtnClick(evt){
+  //   evt.preventDefault();
+  //   setCurrentPage(currentPage+1)
+  //   await unitsAPI.addUnit(formData);
+  // }
 
   return (
       <div className="bg-white border border-smokeyTopaz shadow-md rounded p-2">
@@ -50,7 +67,7 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
           <div>
             <label className="text-smokeyTopaz text-xl p-2">Occupancy</label>
             <select className="border border-grey rounded" type="text" name="occupied" value={formData.occupied} onChange={handleChange} required>
-              <option value="false" selected>Unoccupied</option>
+              <option value="false">Unoccupied</option>
               <option value="true">Occupied</option>
             </select>
           </div>
@@ -74,9 +91,33 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
               <input className="border border-grey rounded" type="file" name="file" value={formData.file} onChange={handleChange} />
             </div>
 
-            <RentForm />
+            <h1 className="text-xl text-smokeyTopaz pb-2">Rent Info</h1>
 
-            <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleBtnClick}>&#8594;&#8594; NEXT &#8594;&#8594;</button>
+          <div>
+            <label className="text-smokeyTopaz text-xl p-2">Rent Amount</label>
+            <input placeholder='Enter Value: 00.00' className="border border-grey rounded" type="text" name="amount" value={formData.amount} onChange={handleChange} />
+          </div>
+
+          <div>
+            <label className="text-smokeyTopaz text-xl p-2">Due Day</label>
+            <input className="border border-grey rounded" type="text" name="dueDay" value={formData.dueDay} onChange={handleChange} />
+          </div>
+
+          {/* <div className="text-smokeyTopaz text-xl">Due Date</div>
+            <div>
+              <DatepickerR
+              useRange={false}
+              asSingle={true}
+              primaryColor={"red"} 
+              value={value2} 
+              onChange={handleValueChange2}
+              />
+          </div> */}
+
+
+            {/* <RentForm setRentData={setRentData} /> */}
+
+            <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">&#8594;&#8594; NEXT &#8594;&#8594;</button>
 
         </form>
         <p className="error-message">&nbsp;{formData.error}</p>

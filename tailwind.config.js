@@ -17,7 +17,10 @@ module.exports = {
       'red': 'FF0000',
     },
     extend: {
-      display: ["group-hover", "group-click"]
+      display: ["group-hover", "group-click"],
+      // height: {
+      //   ''
+      // },
     },
   },
   plugins: [],

@@ -64,7 +64,7 @@ export default function AddPropertyForm ({setUnitNums, setCurrentProperty}){
           <div>
             <label className="text-smokeyTopaz text-xl p-2">State</label>
             <select className="border border-grey rounded" type="enum" name="state" value={formData.state} onChange={handleChange} required>
-              <option value="" selected>Select</option>
+              <option value="Select">Select</option>
               <option value="Alabama">Alabama</option>
               <option value="Alaska">Alaska</option>
               <option value="Arizona">Arizona</option>
@@ -131,7 +131,7 @@ export default function AddPropertyForm ({setUnitNums, setCurrentProperty}){
           <div>
             <label className="text-smokeyTopaz text-xl p-2">Number of Units</label>
             <select className="border border-grey rounded" type="text" name="numOfUnits" value={formData.numOfUnits} onChange={handleChange} required>
-              <option value="Select" selected>Select</option>
+              <option value="Select">Select</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
