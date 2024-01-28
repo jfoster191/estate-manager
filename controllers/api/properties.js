@@ -12,7 +12,7 @@ async function index (req, res){
 }
 
 async function detail(req, res){
-  const property = await Property.findById(req.params.id)
+  const property = await Property.findById(req.params.id).populate('units')
   res.json(property)
 }
 

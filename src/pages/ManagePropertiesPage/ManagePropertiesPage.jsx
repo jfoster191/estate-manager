@@ -44,7 +44,7 @@ export default function ManagePropertiesPage() {
           </div>
         </>
         :
-        <PropertyDetails />
+        null //<PropertyDetails />
       }
       </div>
     </div>
