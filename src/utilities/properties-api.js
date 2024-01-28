@@ -8,3 +8,7 @@ export function addProperty(propertyData){
 export function getProperties(){
   return sendRequest(`${BASE_URL}/index`)
 }
+
+export function getPropertyId(id){
+  return sendRequest(`${BASE_URL}/${id}`)
+}
