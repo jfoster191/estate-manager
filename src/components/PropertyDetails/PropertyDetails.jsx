@@ -1,12 +1,14 @@
 import UnitDetails from "../UnitDetails/UnitDetails";
 import { Link } from "react-router-dom";
 import { useState } from "react"
+import * as unitsAPI from "../../utilities/units-api"
 
 export default function PropertyDetails({currentProperty}){
   const [unit, setUnit] = useState({})
 
   async function handleClick(evt) {
     const selectedUnit = await unitsAPI.getUnitById(evt.target.id)
+    console.log(selectedUnit)
     setUnit(selectedUnit)
   }
 
@@ -42,7 +44,11 @@ export default function PropertyDetails({currentProperty}){
           ))}
         </div>
       </div>
-      <UnitDetails />
+      {JSON.stringify(unit) === '{}' ? 
+        null
+        :
+        <UnitDetails unit={unit} />
+      }
     </div>
   )
 }

@@ -2,13 +2,15 @@ const Unit = require('../../models/unit')
 const Property = require('../../models/property')
 
 module.exports = {
+  detail,
   create
 }
 
-// async function index (req, res){
-//   const units = await Unit.find({owner: req.user._id})
-//   res.json(units)
-// }
+async function detail (req, res){
+  console.log(req.params.id)
+  const unit = await Unit.findById(req.params.id)
+  res.json(unit)
+}
 
 async function create (req, res){
   try {
