@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
@@ -6,6 +6,7 @@ import DashboardPage from '../DashboardPage/DashboardPage';
 import PropertiesPage from '../PropertiesPage/PropertiesPage';
 import ManagePropertiesPage from '../ManagePropertiesPage/ManagePropertiesPage';
 import MaintenancePage from '../MaintenancePage/MaintenancePage';
+import * as propertiesAPI from '../../utilities/properties-api';
 import ServicePage from '../ServicePage/ServicePage'
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-services';
@@ -13,16 +14,25 @@ import { getUser } from '../../utilities/users-services';
 
 function App() {
   const [ user, setUser ] = useState(getUser());
+  const [properties, setProperties] = useState([])
+
+  useEffect(function(){
+    async function getProperties(){
+      const properties = await propertiesAPI.getProperties()
+      setProperties(properties)
+    }
+    getProperties()
+  }, [])
 
   return (
     <main className="App bg-hunter">
       { user ?
       <>
-        <NavBar user={user} setUser={setUser} />
+        <NavBar user={user} setUser={setUser} setProperties={setProperties} />
         <Routes>
           <Route path='/dashboard' element={<DashboardPage />} />
-          <Route path='/properties' element={<PropertiesPage />} />
-          <Route path='/manage-properties' element={<ManagePropertiesPage />} />
+          <Route path='/properties' element={<PropertiesPage properties={properties} />} />
+          <Route path='/manage-properties' element={<ManagePropertiesPage properties={properties} />} />
           <Route path='/maintenance' element={<MaintenancePage />} />
           <Route path='/service' element={<ServicePage />} />
         </Routes>

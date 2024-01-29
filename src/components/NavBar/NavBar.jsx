@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-services';
 
-export default function NavBar({user, setUser}) {
+export default function NavBar({user, setUser, setProperties}) {
   function handleLogout(){
     userService.logOut();
     setUser(null)
+    setProperties([])
   }
   return (
     <header className='w-lvw z-50'>

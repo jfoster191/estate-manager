@@ -4,7 +4,7 @@ import AddUnitForm from "../../components/AddUnitForm/AddUnitForm";
 import PropertiesList from "../../components/PropertiesList/PropertiesList";
 import PropertyDetails from "../../components/PropertyDetails/PropertyDetails";
 
-export default function ManagePropertiesPage() {
+export default function ManagePropertiesPage({properties}) {
   const [unitNums, setUnitNums] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [currentProperty, setCurrentProperty] = useState(null)
@@ -15,7 +15,7 @@ export default function ManagePropertiesPage() {
       <h1 className='text-3xl font-bold mb-4'>Manage Properties</h1>
       <div className="flex">
       <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-1/3 ml-6 mr-2">
-        <PropertiesList setShowAddProperty={setShowAddProperty} />
+        <PropertiesList properties={properties} setShowAddProperty={setShowAddProperty} />
       </aside>
       {showAddProperty ? 
         <>

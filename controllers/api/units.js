@@ -3,14 +3,18 @@ const Property = require('../../models/property')
 
 module.exports = {
   detail,
+  // getUpcomingRents,
   create
 }
 
 async function detail (req, res){
-  console.log(req.params.id)
   const unit = await Unit.findById(req.params.id)
   res.json(unit)
 }
+
+// async function getUpcomingRents(req, res){
+//   const units = await Unit.find({: req.params.id})
+// }
 
 async function create (req, res){
   try {
@@ -26,7 +30,6 @@ async function create (req, res){
       calcAndSetRent(unit.leaseStart, unit.leaseEnd, unit.dueDay, unit)
       await unit.save()
     }
-    console.log(unit)
     const property = await Property.findById(req.body.currentProperty)
     property.units.push(unit._id)
     property.save()

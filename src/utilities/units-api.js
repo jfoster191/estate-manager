@@ -8,3 +8,7 @@ export function addUnit(unitData){
 export function getUnitById(id){
   return sendRequest(`${BASE_URL}/${id}`)
 }
+
+export function getUpcomingRents(){
+  return sendRequest(`${BASE_URL}/upcoming-rents`)
+}

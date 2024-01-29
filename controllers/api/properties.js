@@ -7,7 +7,7 @@ module.exports = {
 }
 
 async function index (req, res){
-  const properties = await Property.find({owner: req.user._id})
+  const properties = await Property.find({owner: req.user._id}).populate('units')
   res.json(properties)
 }
 

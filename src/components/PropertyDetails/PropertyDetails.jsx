@@ -19,11 +19,9 @@ export default function PropertyDetails({currentProperty}){
       <div className="bg-white border border-grey rounded p-4">
         <div>
           <h1 className="text-xl text-smokeyTopaz font-bold pb-1">Property Details</h1>
-          <div className="flex gap-1 text-smokeyTopaz text-lg">
-            <div>{currentProperty.address.street},</div>
-            <div>{currentProperty.address.city},</div>
-            <div>{currentProperty.address.state}</div>
-            <div>{currentProperty.address.zip}</div>
+          <div className="flex flex-col text-smokeyTopaz text-lg">
+            <div className="text-nowrap">{currentProperty.address.street}</div>
+            <div>{currentProperty.address.city}, {currentProperty.address.state} {currentProperty.address.zip}</div>
           </div>
           <div className="font-bold">Select A Unit To View More Details:</div>
         </div>
