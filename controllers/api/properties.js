@@ -3,7 +3,8 @@ const Property = require('../../models/property')
 module.exports = {
   index,
   detail,
-  create
+  create,
+  addMaintenanceRequest
 }
 
 async function index (req, res){
@@ -29,6 +30,21 @@ async function create (req, res){
       },
       owner: req.user._id
     })
+    res.json(property)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+}
+
+async function addMaintenanceRequest(req, res){
+  console.log(req.body)
+  try {
+    const property = await Property.findById(req.body.property)
+    property.maintenanceRequests.push({
+      title: req.body.title,
+      comment: req.body.comment
+    })
+    property.save()
     res.json(property)
   } catch (error) {
     res.status(400).json(error)

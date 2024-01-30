@@ -25,7 +25,7 @@ function App() {
   }, [])
 
   return (
-    <main className="App bg-hunter">
+    <main className="App bg-hunter h-full">
       { user ?
       <>
         <NavBar user={user} setUser={setUser} setProperties={setProperties} />
@@ -33,7 +33,7 @@ function App() {
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='/properties' element={<PropertiesPage properties={properties} />} />
           <Route path='/manage-properties' element={<ManagePropertiesPage properties={properties} />} />
-          <Route path='/maintenance' element={<MaintenancePage />} />
+          <Route path='/maintenance' element={<MaintenancePage properties={properties} />} />
           <Route path='/service' element={<ServicePage />} />
         </Routes>
       </>

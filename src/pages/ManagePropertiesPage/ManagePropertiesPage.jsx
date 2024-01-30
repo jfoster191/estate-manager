@@ -11,7 +11,7 @@ export default function ManagePropertiesPage({properties}) {
   const [showAddProperty, setShowAddProperty] = useState(false)
 
   return (
-    <div className="h-100">
+    <div className="bg-hunter">
       <h1 className='text-3xl font-bold mb-4'>Manage Properties</h1>
       <div className="flex">
       <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-1/3 ml-6 mr-2">

@@ -73,7 +73,7 @@ const maintenanceSchema = new Schema({
     enum: ['New', 'In Progress', 'Resolved'],
     default: 'New',
   },
-  dateResolved: {type: Date, required: true},
+  dateResolved: {type: Date},
   repairCost: {type: Number, match: [/^\d+(\.\d{2})?$/]},
   comment: {type: String}
 }, {

@@ -16,15 +16,15 @@ export default function DashboardPage() {
   }, [])
 
   return(
-    <div className=''>
+    <div className='bg-hunter'>
       <h1 className='text-3xl font-bold'>Dashboard</h1>
       <div className="flex h-100">
         <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-1/3 ml-6 mt-6 h-[90%]">
           <PropertiesList properties={properties} />
         </aside>
         <div>
-          <div className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-2/3 m-6">
-            <MaintenanceList />
+          <div className="flex flex-col justify-start p-4 w-100 mt-2">
+            <MaintenanceList properties={properties} />
           </div>
           <div className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-2/3 m-6">
             <UpcomingRent properties={properties} />

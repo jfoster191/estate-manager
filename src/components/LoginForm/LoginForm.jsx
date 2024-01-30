@@ -39,7 +39,7 @@ export default function LoginForm({ setUser }) {
         <form className='flex flex-col gap-1 bg-white' autoComplete="off" onSubmit={handleSubmit}>
           <div>
             <label className="text-smokeyTopaz text-xl p-2">Email</label>
-            <input className="border border-grey rounded" type="text" name="email" value={credentials.email} onChange={handleChange} required />
+            <input className="border border-grey rounded" type="email" name="email" value={credentials.email} onChange={handleChange} required />
           </div>
           <div>
             <label className="text-smokeyTopaz text-xl p-2">Password</label>

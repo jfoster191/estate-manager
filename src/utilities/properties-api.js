@@ -12,3 +12,7 @@ export function getProperties(){
 export function getPropertyId(id){
   return sendRequest(`${BASE_URL}/${id}`)
 }
+
+export function addMaintenanceRequest(maintenanceData){
+  return sendRequest(`${BASE_URL}/add-maintenance-request`, 'POST', maintenanceData)
+}
