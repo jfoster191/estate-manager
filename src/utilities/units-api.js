@@ -12,3 +12,7 @@ export function getUnitById(id){
 export function getUpcomingRents(){
   return sendRequest(`${BASE_URL}/upcoming-rents`)
 }
+
+export function addServiceRequest(serviceData){
+  return sendRequest(`${BASE_URL}/add-service-request`, 'POST', serviceData)
+}

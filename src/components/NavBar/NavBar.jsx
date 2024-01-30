@@ -25,11 +25,11 @@ export default function NavBar({user, setUser, setProperties}) {
           </div>
 
           <div className="dropdown relative inline-block group-hover:block">
-            <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white'>Maintenance</Link>
-            <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60 mt-4">
+            <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white' to="/maintenance">Maintenance</Link>
+            {/* <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60 mt-4">
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/maintenance'>All Maintenance Items</Link><br />
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0'>Add Maintenance Items</Link>
-            </div>
+            </div> */}
           </div>
 
           <div className="dropdown relative inline-block group-hover:block">

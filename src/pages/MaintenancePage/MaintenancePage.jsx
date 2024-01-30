@@ -15,9 +15,9 @@ export default function MaintenancePage(){
   }, [])
 
   return (
-    <div>
+    <div className="ml-6 mr-6">
       <h1 className='text-3xl font-bold'>Maintenance Page</h1>
-      <div className="flex">
+      <div className="flex mt-6">
         <MaintenanceList properties={properties} />
         <MaintenanceRequestForm properties={properties} />
       </div>

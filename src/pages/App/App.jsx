@@ -34,7 +34,7 @@ function App() {
           <Route path='/properties' element={<PropertiesPage properties={properties} />} />
           <Route path='/manage-properties' element={<ManagePropertiesPage properties={properties} />} />
           <Route path='/maintenance' element={<MaintenancePage properties={properties} />} />
-          <Route path='/service' element={<ServicePage />} />
+          <Route path='/service' element={<ServicePage properties={properties} />} />
         </Routes>
       </>
         :

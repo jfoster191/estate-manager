@@ -3,8 +3,8 @@ const Property = require('../../models/property')
 
 module.exports = {
   detail,
-  // getUpcomingRents,
-  create
+  create,
+  addServiceRequest,
 }
 
 async function detail (req, res){
@@ -12,9 +12,10 @@ async function detail (req, res){
   res.json(unit)
 }
 
-// async function getUpcomingRents(req, res){
-//   const units = await Unit.find({: req.params.id})
-// }
+async function addServiceRequest(req, res){
+  const units = await Unit.find({unitNum: req.body.unitNum})
+  res.json(units)
+}
 
 async function create (req, res){
   try {
