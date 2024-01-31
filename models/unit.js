@@ -34,7 +34,7 @@ const serviceSchema = new Schema({
     default: 'New',
   },
   dateReport: {type: Date, required: true},
-  dateResolved: {type: Date, required: true},
+  dateResolved: {type: Date},
   repairCost: {type: Number, match: [/^\d+(\.\d{2})?$/]},
   comment: {type: String}
 }, {

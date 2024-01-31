@@ -19,7 +19,7 @@ export default function DashboardPage() {
     <div className='bg-hunter'>
       <h1 className='text-3xl font-bold'>Dashboard</h1>
       <div className="flex h-100 gap-4">
-        <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-3/6 ml-6 mt-6 h-[90%]">
+        <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-max-3/6 ml-6 mt-6 h-[90%]">
           <PropertiesList properties={properties} />
         </aside>
         <div>

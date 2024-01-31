@@ -17,11 +17,10 @@ export default function NavBar({user, setUser, setProperties}) {
           <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white' to='/dashboard'>Dashboard</Link>
 
           <div className="dropdown relative inline-block group-hover:block">
-            <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white'>Properties</Link>
-            <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm rounded w-60 mt-4">
+            <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white' to="/properties">Properties</Link>
+            {/* <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm rounded w-60 mt-4">
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/properties'>All Properties</Link><br />
-              <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/manage-properties'>Manage Properties</Link>
-            </div>
+            </div> */}
           </div>
 
           <div className="dropdown relative inline-block group-hover:block">
@@ -33,16 +32,17 @@ export default function NavBar({user, setUser, setProperties}) {
           </div>
 
           <div className="dropdown relative inline-block group-hover:block">
-            <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white'>Service Request</Link>
-            <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60 mt-4">
+            <Link className='hover:bg-smokeyTopaz hover:opacity-75 p-4 rounded text-smokeyTopaz hover:text-white' to="/service">Service Request</Link>
+            {/* <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60 mt-4">
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/service'>All Service Request</Link><br />
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0'>Add Service Request</Link>
-            </div>
+            </div> */}
           </div>
 
           <div className="dropdown relative inline-block group-hover:block">
-            <div className='bg-smokeyTopaz text-white rounded-full pr-4 pl-4 pt-2 pb-2 hover:bg-'>{user.name.substring(0,1).toUpperCase()}</div>
+            <div className='bg-smokeyTopaz text-white rounded-full pr-4 pl-4 pt-2 pb-2 click:bg-white'>{user.name.substring(0,1).toUpperCase()}</div>
             <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-40">
+              <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/manage-properties'>Manage Properties</Link>
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0'>User Settings</Link><br />
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='#' onClick={handleLogout}>Logout</Link>
             </div>

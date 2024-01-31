@@ -2,9 +2,15 @@ const Unit = require('../../models/unit')
 const Property = require('../../models/property')
 
 module.exports = {
+  index,
   detail,
   create,
   addServiceRequest,
+}
+
+async function index(req, res){
+  const units = await Unit.find({})
+  res.json(units)
 }
 
 async function detail (req, res){
@@ -13,8 +19,18 @@ async function detail (req, res){
 }
 
 async function addServiceRequest(req, res){
-  const units = await Unit.find({unitNum: req.body.unitNum})
-  res.json(units)
+  try {
+    const unit = await Unit.findById(req.body.unit)
+    unit.service.push({
+      title: req.body.title,
+      dateReport: req.body.dateReported.startDate,
+      comment: req.body.comment
+    })
+    unit.save()
+    res.json(unit)
+  } catch (error) {
+    res.status(400).json(error)
+  }
 }
 
 async function create (req, res){

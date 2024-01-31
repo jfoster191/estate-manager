@@ -11,9 +11,6 @@ export default function ServiceRequestForm ({properties}){
     title: '',
     comment: '',
     dateReported: null,
-    // repairCost: '',
-    // amount: '',
-    // dueDate: null
   })
 
   const [value, setValue] = useState({
@@ -40,7 +37,6 @@ export default function ServiceRequestForm ({properties}){
 
   async function handleSubmit(evt){
     evt.preventDefault();
-    // setCurrentPage(currentPage+1)
     await unitsAPI.addServiceRequest(formData);
   }
 
@@ -96,13 +92,7 @@ export default function ServiceRequestForm ({properties}){
           <label className="text-smokeyTopaz text-xl p-2">Comment/Details</label>
           <input className="border border-grey rounded h-24" type="text" name="comment" value={formData.comment} onChange={handleChange} />
         </div>
-
-
-        {/* <div>
-          <label className="text-smokeyTopaz text-xl p-2">Repair Cost</label>
-          <input placeholder='Enter Value: 00.00' className="border border-grey rounded" type="number" name="amount" value={formData.amount} onChange={handleChange} />
-        </div> */}
-
+        
           <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">Submit</button>
 
       </form>
