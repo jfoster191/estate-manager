@@ -20,3 +20,7 @@ export function getUpcomingRents(){
 export function addServiceRequest(serviceData){
   return sendRequest(`${BASE_URL}/add-service-request`, 'POST', serviceData)
 }
+
+export function addFile(file){
+  return sendRequest(`${BASE_URL}/add-file`, 'POST', file)
+}

@@ -16,3 +16,7 @@ export function getPropertyId(id){
 export function addMaintenanceRequest(maintenanceData){
   return sendRequest(`${BASE_URL}/add-maintenance-request`, 'POST', maintenanceData)
 }
+
+export function deleteProperty(property){
+  return sendRequest(`${BASE_URL}/delete`, 'DELETE', property)
+}

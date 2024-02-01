@@ -41,7 +41,7 @@ export default function NavBar({user, setUser, setProperties}) {
 
           <div className="dropdown relative inline-block group-hover:block">
             <div className='bg-smokeyTopaz text-white rounded-full pr-4 pl-4 pt-2 pb-2 click:bg-white'>{user.name.substring(0,1).toUpperCase()}</div>
-            <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-40">
+            <div className="dropdown-content right-0 hidden absolute bg-white shadow-sm z-10 rounded w-60">
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='/manage-properties'>Manage Properties</Link>
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0'>User Settings</Link><br />
               <Link className='hover:bg-smokeyTopaz hover:opacity-75 pl-7 pr-7 hover:text-white mb-1.5 rounded ml-0' to='#' onClick={handleLogout}>Logout</Link>

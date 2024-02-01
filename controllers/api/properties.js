@@ -4,7 +4,8 @@ module.exports = {
   index,
   detail,
   create,
-  addMaintenanceRequest
+  addMaintenanceRequest,
+  deleteProperty
 }
 
 async function index (req, res){
@@ -18,7 +19,6 @@ async function detail(req, res){
 }
 
 async function create (req, res){
-  console.log(req.body)
   try {
     const property = await Property.create({
       mortgage: req.body.mortgage,
@@ -37,7 +37,6 @@ async function create (req, res){
 }
 
 async function addMaintenanceRequest(req, res){
-  console.log(req.body)
   try {
     const property = await Property.findById(req.body.property)
     property.maintenanceRequests.push({
@@ -49,4 +48,10 @@ async function addMaintenanceRequest(req, res){
   } catch (error) {
     res.status(400).json(error)
   }
+}
+
+async function deleteProperty(req, res){
+  await Property.deleteOne({_id: req.body._id})
+  const properties = await Property.find({ owner: req.user._id })
+  res.json(properties)
 }

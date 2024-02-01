@@ -6,5 +6,6 @@ router.get('/index', propertiesCtrl.index)
 router.get('/:id', propertiesCtrl.detail)
 router.post('/create', propertiesCtrl.create)
 router.post('/add-maintenance-request', propertiesCtrl.addMaintenanceRequest)
+router.delete('/delete', propertiesCtrl.deleteProperty)
 
 module.exports = router;

@@ -3,8 +3,9 @@ import AddPropertyForm from "../../components/AddPropertyForm/AddPropertyForm";
 import AddUnitForm from "../../components/AddUnitForm/AddUnitForm";
 import PropertiesList from "../../components/PropertiesList/PropertiesList";
 import PropertyDetails from "../../components/PropertyDetails/PropertyDetails";
+import PropertyUpdate from "../../components/PropertyUpdate/PropertyUpdate";
 
-export default function ManagePropertiesPage({properties}) {
+export default function ManagePropertiesPage({properties, setProperties}) {
   const [unitNums, setUnitNums] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [currentProperty, setCurrentProperty] = useState(null)
@@ -15,7 +16,7 @@ export default function ManagePropertiesPage({properties}) {
       <h1 className='text-3xl font-bold mb-4'>Manage Properties</h1>
       <div className="flex">
       <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-1/3 ml-6 mr-2">
-        <PropertiesList properties={properties} setShowAddProperty={setShowAddProperty} />
+        <PropertiesList properties={properties} setShowAddProperty={setShowAddProperty} setCurrentProperty={setCurrentProperty}/>
       </aside>
       {showAddProperty ? 
         <>
@@ -44,7 +45,10 @@ export default function ManagePropertiesPage({properties}) {
           </div>
         </>
         :
-        null //<PropertyDetails />
+        currentProperty ? 
+          <PropertyUpdate property={currentProperty} setProperties={setProperties} />
+          :
+          null
       }
       </div>
     </div>

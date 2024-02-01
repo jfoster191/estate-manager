@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='/properties' element={<PropertiesPage properties={properties} />} />
-          <Route path='/manage-properties' element={<ManagePropertiesPage properties={properties} />} />
+          <Route path='/manage-properties' element={<ManagePropertiesPage properties={properties} setProperties={setProperties}/>} />
           <Route path='/maintenance' element={<MaintenancePage properties={properties} />} />
           <Route path='/service' element={<ServicePage properties={properties} />} />
         </Routes>

@@ -38,6 +38,12 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
     await unitsAPI.addUnit(formData);
   }
 
+  async function handleFile(evt){
+    console.log(formData.file)
+    evt.preventDefault()
+    await unitsAPI.addFile(formData)
+  }
+
   return (
     <div className="bg-white border border-smokeyTopaz shadow-md rounded p-2">
       <h1 className="text-xl text-smokeyTopaz font-bold pb-2">+ Add Unit {idx+1}+</h1>
@@ -86,6 +92,8 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
           <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">&#8594;&#8594; NEXT &#8594;&#8594;</button>
 
       </form>
+          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleFile}>File Test</button>
+
       <p className="error-message">&nbsp;{formData.error}</p>
     </div>
   )

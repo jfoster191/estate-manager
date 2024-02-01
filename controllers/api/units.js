@@ -1,3 +1,9 @@
+const aws = require('@aws-sdk/client-s3')
+const fs = require('fs')
+const uuid = require('uuid')
+const {resolve} = require('path')
+const {replace} = require('path')
+
 const Unit = require('../../models/unit')
 const Property = require('../../models/property')
 
@@ -6,6 +12,7 @@ module.exports = {
   detail,
   create,
   addServiceRequest,
+  addFile,
 }
 
 async function index(req, res){
@@ -54,6 +61,45 @@ async function create (req, res){
   } catch (error) {
     res.status(400).json(error)
   }
+}
+
+/*------ Helper Functions ------*/
+
+async function addFile(req, propID){
+  const inputFile = req.body.file.replace('C:\\fakepath\\', '')
+  fs.realpath(`../${inputFile}`, function(err, real) {
+    if(err) console.log(err)
+    console.log(real)
+  })
+// console.log(temp)
+// console.log(fileType)
+// console.log(path)
+// const testFile = leaseFile.replace('C:\\fakepath\\', '')
+// const leaseFile = fs.readFile(path, (err, date) => {
+//   if(err) throw err
+//   console.log(data)
+// })
+// console.log(leaseFile)
+const downF = inputFile.length - 4
+const fileType = inputFile.slice(downF, inputFile.length)
+if(inputFile){
+  const s3 =  new aws.S3Client({region: "us-east-1"})
+  const key = uuid.v4() + `/${inputFile}`
+  console.log(key)
+  const command = new aws.PutObjectCommand({
+    Bucket: process.env.S3_BUCKET,
+    Key: key,
+    Body: req.body.file,
+    ContentType: fileType
+  })
+  try {
+    const response = await s3.send(command)
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 }
 
 function calcAndSetRent(d1, d2, dueDay, unit){
