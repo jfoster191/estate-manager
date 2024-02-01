@@ -24,6 +24,7 @@ export default function ManagePropertiesPage({properties, setProperties}) {
             <AddPropertyForm 
             setUnitNums={setUnitNums} 
             setCurrentProperty={setCurrentProperty}
+            setShowAddProperty={setShowAddProperty}
             />
             {unitNums ? 
               unitNums.map((unit, idx) => (

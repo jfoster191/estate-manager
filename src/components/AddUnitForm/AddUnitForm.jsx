@@ -7,7 +7,7 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
     occupied: false,
     unitNum: '',
     dates: null,
-    file: null,
+    file: {},
     currentProperty: null,
     amount: '',
     dueDate: null
@@ -38,17 +38,24 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
     await unitsAPI.addUnit(formData);
   }
 
-  async function handleFile(evt){
-    console.log(formData.file)
+  function handleFileChange(evt) {
+    // console.log(evt.target.files[0])
+    setFormData({...formData, file: evt.target.files[0]})
+  }
+
+  async function handleFileSubmit(evt){
     evt.preventDefault()
-    await unitsAPI.addFile(formData)
+    const payload = new FormData()
+    payload.append('occupied', formData.occupied)
+    payload.append('file', formData.file, formData.file.name)
+    await unitsAPI.addFile(payload)
   }
 
   return (
     <div className="bg-white border border-smokeyTopaz shadow-md rounded p-2">
       <h1 className="text-xl text-smokeyTopaz font-bold pb-2">+ Add Unit {idx+1}+</h1>
       <hr />
-      <form className="flex flex-col gap-1 pt-3" autoComplete="off" onSubmit={handleSubmit}>
+      <form id="formFile" className="flex flex-col gap-1 pt-3" autoComplete="off" onSubmit={handleSubmit}>
         <div>
           <label className="text-smokeyTopaz text-xl p-2">Occupancy</label>
           <select className="border border-grey rounded" type="text" name="occupied" value={formData.occupied} onChange={handleChange} required>
@@ -74,7 +81,7 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
 
           <div>
             <label className="text-smokeyTopaz text-xl p-2">Lease File</label>
-            <input className="border border-grey rounded" type="file" name="file" value={formData.file} onChange={handleChange} />
+            <input className="border border-grey rounded" type="file" name="file" /*value={formData.file}*/ onChange={handleFileChange} />
           </div>
 
           <h1 className="text-xl text-smokeyTopaz pb-2">Rent Info</h1>
@@ -92,7 +99,7 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
           <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">&#8594;&#8594; NEXT &#8594;&#8594;</button>
 
       </form>
-          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleFile}>File Test</button>
+          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleFileSubmit}>File Test</button>
 
       <p className="error-message">&nbsp;{formData.error}</p>
     </div>

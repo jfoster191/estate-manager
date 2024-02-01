@@ -3,7 +3,7 @@ import AddUnitForm from "../AddUnitForm/AddUnitForm"
 import * as propertiesAPI from "../../utilities/properties-api"
 
 
-export default function AddPropertyForm ({setUnitNums, setCurrentProperty}){
+export default function AddPropertyForm ({setUnitNums, setCurrentProperty, setShowAddProperty}){
 
   const [formData, setFormData] = useState({
     street: '',
@@ -42,6 +42,9 @@ export default function AddPropertyForm ({setUnitNums, setCurrentProperty}){
 
   function handleBtnClick(){
     setUnitNums(unitNum)
+  }
+  function handleCancelBtn(){
+    setShowAddProperty(null)
   }
   
   return (
@@ -147,6 +150,10 @@ export default function AddPropertyForm ({setUnitNums, setCurrentProperty}){
             <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleBtnClick}>&#8594;&#8594; NEXT &#8594;&#8594;</button>
         </form>
         <p className="error-message">&nbsp;{formData.error}</p>
+        <div>
+            <button className="pl-10 pr-10 text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleCancelBtn}>CANCEL</button>
+
+        </div>
       </div>
     </div>
   )

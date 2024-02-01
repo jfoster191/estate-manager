@@ -7,15 +7,14 @@ export default function PropertiesPage({properties}) {
   const [currentProperty, setCurrentProperty] = useState(null)
 
   return (
-    <>
-    <h1 className='text-3xl font-bold'>Properties Page</h1>
-    <div className="flex h-lvh">
-      <div className="flex mt-6">
-        <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 ml-6 w-max-3/6 h-4/5">
+    <div>
+      <h1 className='text-3xl font-bold'>Properties Page</h1>
+      <div className="flex mt-6 h-100">
+        <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 ml-6 w-max-3/6 h-[90%]">
           <PropertiesList properties={properties} setCurrentProperty={setCurrentProperty} />
         </aside>
         {currentProperty ? 
-          <div className="w-2/3">
+          <div className="w-2/3 h-[90%]">
             <PropertyDetails currentProperty={currentProperty} />
           </div>
           :
@@ -23,6 +22,5 @@ export default function PropertiesPage({properties}) {
         }
       </div>
     </div>
-    </>
   )
 }

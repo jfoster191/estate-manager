@@ -25,7 +25,7 @@ export default function PropertyDetails({currentProperty}){
           </div>
           <div className="font-bold">Select A Unit To View More Details:</div>
         </div>
-        <div className="flex flex-col overflow-y-scroll h-96 gap-2 border border-smokeyTopaz rounded p-2">
+        <div className="flex flex-col overflow-y-scroll gap-2 border border-smokeyTopaz rounded p-2 h-[21.25rem]">
           {currentProperty.units.map((unit, idx) =>(
             <Link id={unit._id} key={idx} className="border border-grey ml-1 mt-2 hover:bg-grey" onClick={handleClick}>
               <div id={unit._id} className="font-bold">Unit {unit.unitNum} is {unit.occupied ? 
