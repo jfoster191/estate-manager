@@ -8,5 +8,7 @@ router.get('/:id', unitsCtrl.detail)
 router.post('/add-service-request', unitsCtrl.addServiceRequest)
 router.post('/create', unitsCtrl.create)
 router.post('/add-file', upload.single('file'), unitsCtrl.addFile)
+router.post('/update-unit', unitsCtrl.updateUnit)
+router.post('/add-tenant', unitsCtrl.addTenant)
 
 module.exports = router;

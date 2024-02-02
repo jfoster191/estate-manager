@@ -47,7 +47,7 @@ export default function ManagePropertiesPage({properties, setProperties}) {
         </>
         :
         currentProperty ? 
-          <PropertyUpdate property={currentProperty} setProperties={setProperties} />
+          <PropertyUpdate property={currentProperty} setCurrentProperty={setCurrentProperty} setProperties={setProperties} />
           :
           null
       }

@@ -24,3 +24,11 @@ export function addServiceRequest(serviceData){
 export function addFile(payload){
   return sendRequest(`${BASE_URL}/add-file`, 'POST', payload, true)
 }
+
+export function updateUnit(unitData){
+  return sendRequest(`${BASE_URL}/update-unit`, 'POST', unitData)
+}
+
+export function addTenant(tenantData){
+  return sendRequest(`${BASE_URL}/add-tenant`, 'POST', tenantData)
+}

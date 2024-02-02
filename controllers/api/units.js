@@ -13,6 +13,8 @@ module.exports = {
   create,
   addServiceRequest,
   addFile,
+  updateUnit,
+  addTenant
 }
 
 async function index(req, res){
@@ -57,6 +59,43 @@ async function create (req, res){
     const property = await Property.findById(req.body.currentProperty)
     property.units.push(unit._id)
     property.save()
+    res.json(unit)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+}
+
+async function updateUnit(req, res){
+  const updates = {}
+  if(req.body.occupied) updates.occupied = req.body.occupied
+  if(req.body.dates.endDate) updates.leaseEnd = req.body.dates.endDate
+  if(req.body.dates.startDate) updates.leaseStart = req.body.dates.startDate
+  if(req.body.amount) updates.amount = req.body.amount
+  if(req.body.dueDay) updates.dueDay = req.body.dueDay
+  console.log(updates)
+  try {
+    const unit = await Unit.findByIdAndUpdate(req.body.unit, updates)
+    if(unit.leaseStart){
+      calcAndSetRent(unit.leaseStart, unit.leaseEnd, unit.dueDay, unit)
+      await unit.save()
+    }
+    res.json(unit)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+}
+
+async function addTenant(req, res){
+  console.log(req.body)
+  try {
+    const unit = await Unit.findById(req.body.unit)
+    unit.tenants.push({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone
+    })
+    unit.save()
     res.json(unit)
   } catch (error) {
     res.status(400).json(error)

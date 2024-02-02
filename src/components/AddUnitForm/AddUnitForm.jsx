@@ -1,11 +1,12 @@
 import { useState } from "react";
-import DatepickerR from "react-tailwindcss-datepicker";
+import Datepicker from "react-tailwindcss-datepicker";
 import * as unitsAPI from '../../utilities/units-api';
 
 export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx, currentProperty}){  
   const [formData, setFormData] = useState({
     occupied: false,
     unitNum: '',
+    numOfRooms: null,
     dates: null,
     file: {},
     currentProperty: null,
@@ -67,11 +68,15 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
         <div>
           <label className="text-smokeyTopaz text-xl p-2">Unit #</label>
           <input className="border border-grey rounded" type="text" name="unitNum" value={formData.unitNum} onChange={handleChange} required />
+        </div>
+        <div>
+          <label className="text-smokeyTopaz text-xl p-2"># of Bedrooms</label>
+          <input className="border border-grey rounded" type="text" name="numOfRooms" value={formData.numOfRooms} onChange={handleChange} required />
         </div><hr />
 
         <div className="text-smokeyTopaz text-xl">Lease Period</div>
           <div>
-            <DatepickerR
+            <Datepicker
             primaryColor="red"
             popoverDirection="down"
             value={value} 

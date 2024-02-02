@@ -5,6 +5,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import PropertiesPage from '../PropertiesPage/PropertiesPage';
 import ManagePropertiesPage from '../ManagePropertiesPage/ManagePropertiesPage';
+import TenantsPage from '../TenantsPage/TenantsPage';
 import MaintenancePage from '../MaintenancePage/MaintenancePage';
 import * as propertiesAPI from '../../utilities/properties-api';
 import ServicePage from '../ServicePage/ServicePage'
@@ -35,6 +36,7 @@ function App() {
           <Route path='/manage-properties' element={<ManagePropertiesPage properties={properties} setProperties={setProperties}/>} />
           <Route path='/maintenance' element={<MaintenancePage properties={properties} />} />
           <Route path='/service' element={<ServicePage properties={properties} />} />
+          <Route path='/manage-tenants' element={<TenantsPage properties={properties} />} />
         </Routes>
       </>
         :

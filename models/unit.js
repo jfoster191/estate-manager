@@ -11,7 +11,6 @@ const tenantSchema = new Schema({
   email: {
     type: String, 
     lowercase: true,
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
   },
 }, {
   timestamps: true
@@ -44,7 +43,8 @@ const serviceSchema = new Schema({
 const unitSchema = new Schema({
   leaseStart: Date,
   leaseEnd: Date,
-  leaseFile: String,
+  leaseFile: [String],
+  numOfRooms: Number,
   amount: {type: Number},
   dueDay: {type: Number},
   unitNum: {type: String, required: true},
