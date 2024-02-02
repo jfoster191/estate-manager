@@ -24,8 +24,18 @@ export default function TenantsLsit(){
   })
   
   return (
-    <div>
-      <h1>Tenants</h1>
+    <div className="bg-white border border-grey rounded p-4 h-[90%]">
+      <h1 className="text-xl text-smokeyTopaz font-bold pb-2">Tenants</h1>
+      <div className="flex flex-col overflow-y-scroll gap-2 mt-3">
+        {flatTenants.map((tenant) => (
+          <div className="bg-white border border-smokeyTopaz rounded p-2">
+            <div>{tenant.firstName} {tenant.lastName}</div>
+            <div>Contant Info</div><hr />
+            <div>Email: {tenant.email}</div>
+            <div>Phone: {tenant.phone}</div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
