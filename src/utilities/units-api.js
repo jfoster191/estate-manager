@@ -6,7 +6,7 @@ export function getUnits(){
 }
 
 export function addUnit(unitData){
-  return sendRequest(`${BASE_URL}/create`, 'POST', unitData)
+  return sendRequest(`${BASE_URL}/create`, 'POST', unitData, true)
 }
 
 export function getUnitById(id){

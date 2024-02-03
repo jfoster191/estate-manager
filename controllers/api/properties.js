@@ -51,7 +51,11 @@ async function addMaintenanceRequest(req, res){
 }
 
 async function deleteProperty(req, res){
-  await Property.deleteOne({_id: req.body._id})
+  try {
+    await Property.deleteOne({_id: req.body._id})
+  } catch (error) {
+    res.status(400).json(error)
+  }
   const properties = await Property.find({ owner: req.user._id })
   res.json(properties)
 }

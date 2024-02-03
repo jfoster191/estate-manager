@@ -13,8 +13,9 @@ module.exports = {
       'grey': '#D9D9D9',
       'slate': '#3f3f46',
       'white': '#FFFFFF',
-      'black': '000000',
-      'red': 'FF0000',
+      'black': '#000000',
+      'red': '#FF0000',
+      'blue': '#3a86ff'
     },
     extend: {
       display: ["group-hover", "group-click"],

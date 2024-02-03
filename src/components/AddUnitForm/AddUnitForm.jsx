@@ -11,7 +11,7 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
     file: {},
     currentProperty: null,
     amount: '',
-    dueDate: null
+    dueDay: null
   })
 
   const [value, setValue] = useState({
@@ -35,8 +35,20 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
 
   async function handleSubmit(evt){
     evt.preventDefault();
-    setCurrentPage(currentPage+1)
-    await unitsAPI.addUnit(formData);
+    const payload = new FormData()
+    payload.append('occupied', formData.occupied)
+    payload.append('unitNum', formData.unitNum)
+    if(formData.occupied){
+      payload.append('numOfRooms', formData.numOfRooms)
+      payload.append('leaseStart', formData.dates.startDate)
+      payload.append('leaseEnd', formData.dates.endDate)
+      payload.append('file', formData.file, formData.file.name)
+      payload.append('currentProperty', formData.currentProperty)
+      payload.append('amount', formData.amount)
+      payload.append('dueDay', formData.dueDay)
+    }
+    setCurrentPage(currentPage+1);
+    await unitsAPI.addUnit(payload);
   }
 
   function handleFileChange(evt) {
@@ -44,13 +56,20 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
     setFormData({...formData, file: evt.target.files[0]})
   }
 
-  async function handleFileSubmit(evt){
-    evt.preventDefault()
-    const payload = new FormData()
-    payload.append('occupied', formData.occupied)
-    payload.append('file', formData.file, formData.file.name)
-    await unitsAPI.addFile(payload)
-  }
+  // async function handleFileSubmit(evt){
+  //   evt.preventDefault()
+  //   const payload = new FormData()
+  //   payload.append('occupied', formData.occupied)
+  //   payload.append('unitNum', formData.unitNum)
+  //   payload.append('numOfRooms', formData.numOfRooms)
+  //   payload.append('leaseStart', formData.dates.startDate)
+  //   payload.append('leaseEnd', formData.dates.endDate)
+  //   payload.append('file', formData.file, formData.file.name)
+  //   payload.append('currentProperty', formData.currentProperty)
+  //   payload.append('amount', formData.amount)
+  //   payload.append('dueDate', formData.dueDate)
+  //   await unitsAPI.addFile(payload)
+  // }
 
   return (
     <div className="bg-white border border-smokeyTopaz shadow-md rounded p-2">
@@ -104,7 +123,7 @@ export default function AddUnitForm ({setCurrentPage, currentPage, unitNums, idx
           <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">&#8594;&#8594; NEXT &#8594;&#8594;</button>
 
       </form>
-          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleFileSubmit}>File Test</button>
+          {/* <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit" onClick={handleFileSubmit}>File Test</button> */}
 
       <p className="error-message">&nbsp;{formData.error}</p>
     </div>

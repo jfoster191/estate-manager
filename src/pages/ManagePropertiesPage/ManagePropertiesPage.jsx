@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import AddPropertyForm from "../../components/AddPropertyForm/AddPropertyForm";
 import AddUnitForm from "../../components/AddUnitForm/AddUnitForm";
 import PropertiesList from "../../components/PropertiesList/PropertiesList";
-import PropertyDetails from "../../components/PropertyDetails/PropertyDetails";
 import PropertyUpdate from "../../components/PropertyUpdate/PropertyUpdate";
 
 export default function ManagePropertiesPage({properties, setProperties}) {
@@ -47,7 +46,7 @@ export default function ManagePropertiesPage({properties, setProperties}) {
         </>
         :
         currentProperty ? 
-          <PropertyUpdate property={currentProperty} setCurrentProperty={setCurrentProperty} setProperties={setProperties} />
+          <PropertyUpdate property={currentProperty} setProperties={setProperties} setCurrentProperty={setCurrentProperty} />
           :
           null
       }

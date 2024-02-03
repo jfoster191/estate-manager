@@ -128,7 +128,7 @@ export default function AddPropertyForm ({setUnitNums, setCurrentProperty, setSh
 
           <div>
             <label className="text-smokeyTopaz text-xl p-2">Mortgage</label>
-            <input className="border border-grey rounded" placeholder="Enter Value: 00.00" type="text" name="mortgage" value={formData.mortgage} onChange={handleChange} required />
+            <input className="border border-grey rounded" placeholder="Enter Value: 00.00" type="text" name="mortgage" value={formData.mortgage} onChange={handleChange} />
           </div>
 
           <div>

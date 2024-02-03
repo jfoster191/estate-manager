@@ -43,18 +43,43 @@ async function addServiceRequest(req, res){
 }
 
 async function create (req, res){
+  console.log(req.body, req.file)
   try {
     const unit = await Unit.create({
-      leaseStart: req.body.dates.startDate,
-      leaseEnd: req.body.dates.endDate,
+      leaseStart: req.body.leaseStart,
+      leaseEnd: req.body.leaseEnd,
       unitNum: req.body.unitNum,
+      numOfRooms: req.body.numOfRooms,
       occupied: req.body.occupied,
       amount: req.body.amount,
       dueDay: req.body.dueDay,
+      leaseFile: []
     })
     if(unit.leaseStart){
       calcAndSetRent(unit.leaseStart, unit.leaseEnd, unit.dueDay, unit)
       await unit.save()
+    }
+    if(req.file){
+      const inputFile = req.file
+      if(inputFile){
+        const s3 =  new aws.S3Client({region: "us-east-1"})
+        const command = new aws.PutObjectCommand({
+          Bucket: process.env.S3_BUCKET,
+          Key: `${req.body.unitNum}-${inputFile.originalname.replace(" ", "")}`,
+          Body: inputFile.buffer,
+          ContentType: inputFile.mimetype,
+        })
+        const filePath = `https://${process.env.S3_BUCKET}.s3.amazonaws.com/${req.body.unitNum}-${inputFile.originalname.replace(" ", "")}`
+        console.log(filePath)
+        try {
+          const response = await s3.send(command)
+          console.log(response)
+        } catch (error) {
+          console.log(error)
+        }
+        unit.leaseFile.push(filePath)
+        await unit.save()
+      }
     }
     const property = await Property.findById(req.body.currentProperty)
     property.units.push(unit._id)
@@ -104,15 +129,17 @@ async function addTenant(req, res){
 
 /*------ Helper Functions ------*/
 
-async function addFile(req, propID){
+async function addFile(req){
   const inputFile = req.file
   if(inputFile){
     const s3 =  new aws.S3Client({region: "us-east-1"})
     const command = new aws.PutObjectCommand({
       Bucket: process.env.S3_BUCKET,
-      Key: `${Date.now()}-${inputFile.originalname}`,
+      Key: `${req.body.unitNum}-${inputFile.originalname.replace(" ", "")}`,
       Body: inputFile.buffer,
     })
+    const filePath = `https://${process.env.S3_BUCKET}.s3.amazonaws.com/${req.body.unitNum}-${inputFile.originalname.replace(" ", "")}`
+    console.log(filePath)
     try {
       const response = await s3.send(command)
       console.log(response)
@@ -120,7 +147,7 @@ async function addFile(req, propID){
       console.log(error)
     }
   }
-return `${process.env.S3_BASE_URL}${process.env.S3_BUCKET}/${command.key}`
+  return filePath
 }
 
 function calcAndSetRent(d1, d2, dueDay, unit){

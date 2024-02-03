@@ -38,6 +38,13 @@ export default function ServiceRequestForm ({properties}){
   async function handleSubmit(evt){
     evt.preventDefault();
     await unitsAPI.addServiceRequest(formData);
+    setFormData({
+      property: '',
+      unit: '',
+      title: '',
+      comment: '',
+      dateReported: null,
+    })
   }
 
   return (

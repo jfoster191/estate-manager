@@ -81,7 +81,7 @@ export default function AddTenantsForm({properties}){
           null
         }
 
-        <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">+ ADD TENANT +</button>
+        <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br mt-10" type="submit">+ ADD TENANT +</button>
       </form>
     </div>
   )

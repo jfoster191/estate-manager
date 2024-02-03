@@ -4,7 +4,7 @@ import TenantsList from "../../components/TenantsList/TenantsList"
 import * as propertiesAPI from "../../utilities/properties-api";
 import * as unitsAPI from "../../utilities/units-api";
 
-export default function PropertyUpdate({property, setCurrentProperty,setProperties}){
+export default function PropertyUpdate({property, setProperties, setCurrentProperty}){
   const [formData, setFormData] = useState({
     occupied: false,
     unit: null,
@@ -47,12 +47,14 @@ export default function PropertyUpdate({property, setCurrentProperty,setProperti
     evt.preventDefault();
     await unitsAPI.updateUnit(formData)
     setShowUnit(false)
+    setCurrentProperty(null)
   }
 
   async function handleRemoveBtn(evt){
     evt.preventDefault();
     const properties = await propertiesAPI.deleteProperty(property)
     setProperties(properties)
+    setCurrentProperty(null)
   }
   return (
     <div className="flex flex-col h-[90%] bg-white border border-grey rounded p-4">
