@@ -84,7 +84,7 @@ export default function MaintenanceRequestForm ({properties, updateM, setUpdateM
           <input placeholder='Enter Value: 00.00' className="border border-grey rounded" type="number" name="amount" value={formData.amount} onChange={handleChange} />
         </div> */}
 
-          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">Submit</button>
+          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br mt-10" type="submit">Submit</button>
 
       </form>
       <p className="error-message">&nbsp;{formData.error}</p>

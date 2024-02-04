@@ -18,14 +18,16 @@ export default function MaintenancePage({properties}){
   // }, [])
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center ml-3 mr-3">
       <h1 className='text-3xl font-bold'>Maintenance Page</h1>
       <div className="flex mt-6 gap-4">
       <UpdateContextM.Provider value={updateM}>
         <MaintenanceList />
       </UpdateContextM.Provider>
       <UpdateContextM.Provider value={updateM}>
-        <MaintenanceRequestForm properties={properties} updateM={updateM} setUpdateM={setUpdateM} />
+        <div className="w-2/3">
+          <MaintenanceRequestForm properties={properties} updateM={updateM} setUpdateM={setUpdateM} />
+        </div>
       </UpdateContextM.Provider>
       </div>
     </div>

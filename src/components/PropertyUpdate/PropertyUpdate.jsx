@@ -64,7 +64,7 @@ export default function PropertyUpdate({property, setProperties, setCurrentPrope
     else{ setUpdate("") }
   }
   return (
-    <div className="flex flex-col h-[90%] bg-white border border-grey rounded p-4">
+    <div className="flex flex-col h-100 bg-white border border-grey rounded p-4">
       <h1 className="text-xl text-smokeyTopaz font-bold pb-2">Update Property</h1>
       <div>{property.address.street}</div>
       <div>{property.address.city}, {property.address.state} {property.address.zip}</div><hr />

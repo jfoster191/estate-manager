@@ -17,20 +17,18 @@ export default function DashboardPage() {
   }, [])
 
   return(
-    <div className='bg-hunter h-100'>
+    <div className='bg-hunter h-100 w-lvw'>
       <h1 className='text-3xl font-bold'>Dashboard</h1>
       <div className="flex gap-4">
-        <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-max-3/6 ml-6 mt-6 h-[90%]">
+        <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 mt-6 ml-3 w-1/3 h-[90%]">
           <PropertiesList properties={properties} />
         </aside>
-        <div className='flex flex-col'>
-          <div className="mt-6">
+          <div className="mt-6 w-1/3">
             <MaintenanceList properties={properties} />
           </div>
-          <div className='mt-4'>
+          <div className='mt-6 w-1/3 mr-3'>
             <ServiceList />
           </div>
-        </div>
       </div>
     </div>
   ) 

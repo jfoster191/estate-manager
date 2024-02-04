@@ -21,7 +21,7 @@ export default function ServiceList(){
   console.log(flatServices)
 
   return (
-    <div className="bg-white border border-grey shadow-md rounded p-2">
+    <div className="bg-white border border-grey shadow-md rounded p-2 h-[30.5rem]">
       <h1 className="text-xl text-smokeyTopaz font-bold pb-2">Service List</h1>
       <div className="flex flex-col gap-2 overflow-y-scroll h-[90%]">
         {flatServices.map((service, idx) => (

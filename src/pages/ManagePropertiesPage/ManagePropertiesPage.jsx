@@ -13,7 +13,7 @@ export default function ManagePropertiesPage({properties, setProperties}) {
   const [update, setUpdate] = useState(null)
 
   return (
-    <div className="bg-hunter">
+    <div className="bg-hunter h-100">
       <h1 className='text-3xl font-bold mb-4'>Manage Properties</h1>
       <div className="flex">
       <aside className="flex flex-col justify-start bg-white border border-grey rounded p-4 w-1/3 ml-6 mr-2">
@@ -55,7 +55,7 @@ export default function ManagePropertiesPage({properties, setProperties}) {
         :
         currentProperty ? 
           <UpdateContext.Provider value={update}>
-            <PropertyUpdate property={currentProperty} setProperties={setProperties} setCurrentProperty={setCurrentProperty} update={update} setUpdate={setUpdate} />
+              <PropertyUpdate property={currentProperty} setProperties={setProperties} setCurrentProperty={setCurrentProperty} update={update} setUpdate={setUpdate} />
           </UpdateContext.Provider>
           :
           null
