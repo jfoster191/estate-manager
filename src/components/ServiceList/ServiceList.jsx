@@ -31,7 +31,6 @@ export default function ServiceList(){
             <div>Date Reported: {service.dateReport.slice(0,10)}</div>
             <div>{service.comment}</div>
             {service.repairStatus === 'Resolved' ? <div>Date Resolved: {service.dateReport.slice(0,10)}</div> : null}
-            
           </div>
         ))}
       </div>

@@ -3,7 +3,7 @@ import AddUnitForm from "../AddUnitForm/AddUnitForm"
 import * as propertiesAPI from "../../utilities/properties-api"
 
 
-export default function AddPropertyForm ({setUnitNums, setCurrentProperty, setShowAddProperty}){
+export default function AddPropertyForm ({setUnitNums, setCurrentProperty, setShowAddProperty, update, setUpdate}){
 
   const [formData, setFormData] = useState({
     street: '',
@@ -42,6 +42,7 @@ export default function AddPropertyForm ({setUnitNums, setCurrentProperty, setSh
 
   function handleBtnClick(){
     setUnitNums(unitNum)
+    
   }
   function handleCancelBtn(){
     setShowAddProperty(null)

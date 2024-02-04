@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as propertiesAPI from "../../utilities/properties-api";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export default function PropertiesList({setShowAddProperty, setCurrentProperty}){
   const [properties, setProperties] = useState([])
@@ -20,6 +20,8 @@ export default function PropertiesList({setShowAddProperty, setCurrentProperty})
   async function handleClick(evt){
     const property = await propertiesAPI.getPropertyId(evt.target.id)
     setCurrentProperty(property)
+    if(window.location.href.slice(22,39) === 'manage-properties')
+    setShowAddProperty(false)
   }
 
   return (
@@ -31,7 +33,7 @@ export default function PropertiesList({setShowAddProperty, setCurrentProperty})
       <h1 className="text-xl text-smokeyTopaz font-bold pb-2">Properties List</h1>
       <div className="flex flex-col gap-2 h-96 overflow-y-scroll">
         {properties.map((property, idx) => (
-          <Link id={property._id} key={idx} className="border border-smokeyTopaz rounded hover:bg-smokeyTopaz hover:text-white hover:opacity-75 hover:border-grey shadow-md hover:shadow-lg" onClick={handleClick}>
+          <Link id={property._id} key={idx} className="border border-smokeyTopaz rounded hover:bg-smokeyTopaz hover:text-white hover:opacity-75 hover:border-grey shadow-md hover:shadow-lg pl-1 pr-0.5" onClick={handleClick}>
             <div id={property._id}>{property.address.street}</div>
             <div id={property._id} className="flex gap-2 justify-center -mt-2">
               <div id={property._id}>{property.address.city},</div>

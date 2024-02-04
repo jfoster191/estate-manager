@@ -1,6 +1,6 @@
 import {  useState } from 'react';
 import * as usersService from '../../utilities/users-services';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function LoginForm({ setUser }) {

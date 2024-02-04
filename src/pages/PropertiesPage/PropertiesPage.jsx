@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import PropertiesList from "../../components/PropertiesList/PropertiesList";
 import PropertyDetails from "../../components/PropertyDetails/PropertyDetails";
 import * as propertiesAPI from "../../utilities/properties-api";

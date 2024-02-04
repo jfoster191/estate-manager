@@ -3,7 +3,7 @@ import DatepickerR from "react-tailwindcss-datepicker";
 import * as propertiesAPI from '../../utilities/properties-api';
 import * as unitsAPI from '../../utilities/units-api';
 
-export default function ServiceRequestForm ({properties}){  
+export default function ServiceRequestForm ({properties, update, setUpdate}){  
   const [currentProperty, setCurrentProperty] = useState({})
   const [formData, setFormData] = useState({
     property: '',
@@ -45,6 +45,9 @@ export default function ServiceRequestForm ({properties}){
       comment: '',
       dateReported: null,
     })
+    if(update === ""){ setUpdate(null) }
+    else{ setUpdate("") } 
+    
   }
 
   return (
@@ -97,10 +100,10 @@ export default function ServiceRequestForm ({properties}){
 
         <div className="flex flex-col">
           <label className="text-smokeyTopaz text-xl p-2">Comment/Details</label>
-          <input className="border border-grey rounded h-24" type="text" name="comment" value={formData.comment} onChange={handleChange} />
+          <textarea className="border border-grey rounded h-24 p-1" type="text" name="comment" value={formData.comment} onChange={handleChange} />
         </div>
         
-          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br" type="submit">Submit</button>
+          <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br mt-10" type="submit">Submit</button>
 
       </form>
       <p className="error-message">&nbsp;{formData.error}</p>

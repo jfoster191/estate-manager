@@ -2,7 +2,7 @@ import { useState } from "react";
 import DatepickerR from "react-tailwindcss-datepicker";
 import * as propertiesAPI from '../../utilities/properties-api';
 
-export default function MaintenanceRequestForm ({properties}){  
+export default function MaintenanceRequestForm ({properties, updateM, setUpdateM}){  
   const [formData, setFormData] = useState({
     property: '',
     title: '',
@@ -36,6 +36,8 @@ export default function MaintenanceRequestForm ({properties}){
     evt.preventDefault();
     // setCurrentPage(currentPage+1)
     await propertiesAPI.addMaintenanceRequest(formData);
+    if(updateM === ""){ setUpdateM(null) }
+    else{ setUpdateM("") } 
   }
 
   return (
@@ -62,7 +64,7 @@ export default function MaintenanceRequestForm ({properties}){
 
         <div className="flex flex-col">
           <label className="text-smokeyTopaz text-xl p-2">Comment/Details</label>
-          <input className="border border-grey rounded h-24" type="text" name="comment" value={formData.comment} onChange={handleChange} />
+          <textarea className="border border-grey rounded h-24 p-1" type="text" name="comment" value={formData.comment} onChange={handleChange} />
         </div>
 
         {/* <div className="text-smokeyTopaz text-xl">Date Resolved</div>

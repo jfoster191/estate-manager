@@ -1,25 +1,32 @@
 import MaintenanceList from "../../components/MaintenanceList/MaintenanceList";
 import MaintenanceRequestForm from "../../components/MaintenanceRequestForm/MaintenanceRequestForm";
-import { useEffect, useState } from "react";
-import * as propertiesAPI from "../../utilities/properties-api";
+import { useState } from "react";
+import { createContext } from "react";
+// import * as propertiesAPI from "../../utilities/properties-api";
 
-export default function MaintenancePage(){
-  const [properties, setProperties] = useState([])
+export default function MaintenancePage({properties}){
+  // const [properties, setProperties] = useState([])
+  const UpdateContextM = createContext()
+  const [updateM, setUpdateM] = useState(null)
 
-  useEffect(function(){
-    async function getProperties(){
-      const properties = await propertiesAPI.getProperties()
-      setProperties(properties)
-    }
-    getProperties()
-  }, [])
+  // useEffect(function(){
+  //   async function getProperties(){
+  //     const properties = await propertiesAPI.getProperties()
+  //     setProperties(properties)
+  //   }
+  //   getProperties()
+  // }, [])
 
   return (
     <div className="flex flex-col justify-center items-center">
       <h1 className='text-3xl font-bold'>Maintenance Page</h1>
       <div className="flex mt-6 gap-4">
-        <MaintenanceList properties={properties} />
-        <MaintenanceRequestForm properties={properties} />
+      <UpdateContextM.Provider value={updateM}>
+        <MaintenanceList />
+      </UpdateContextM.Provider>
+      <UpdateContextM.Provider value={updateM}>
+        <MaintenanceRequestForm properties={properties} updateM={updateM} setUpdateM={setUpdateM} />
+      </UpdateContextM.Provider>
       </div>
     </div>
   )
