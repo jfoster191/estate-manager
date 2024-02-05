@@ -32,6 +32,7 @@ function App() {
         <NavBar user={user} setUser={setUser} setProperties={setProperties} />
         <Routes>
           <Route path='/dashboard' element={<DashboardPage />} />
+          <Route path='/' element={<DashboardPage />} />
           <Route path='/properties' element={<PropertiesPage properties={properties} />} />
           <Route path='/manage-properties' element={<ManagePropertiesPage properties={properties} setProperties={setProperties}/>} />
           <Route path='/maintenance' element={<MaintenancePage properties={properties} />} />

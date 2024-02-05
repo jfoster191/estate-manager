@@ -6,8 +6,8 @@ import { createContext } from "react";
 
 export default function MaintenancePage({properties}){
   // const [properties, setProperties] = useState([])
-  const UpdateContextM = createContext()
-  const [updateM, setUpdateM] = useState(null)
+  const UpdateContext = createContext()
+  const [update, setUpdate] = useState(null)
 
   // useEffect(function(){
   //   async function getProperties(){
@@ -21,14 +21,14 @@ export default function MaintenancePage({properties}){
     <div className="flex flex-col justify-center items-center ml-3 mr-3">
       <h1 className='text-3xl font-bold'>Maintenance Page</h1>
       <div className="flex mt-6 gap-4">
-      <UpdateContextM.Provider value={updateM}>
+      <UpdateContext.Provider value={update}>
         <MaintenanceList />
-      </UpdateContextM.Provider>
-      <UpdateContextM.Provider value={updateM}>
+      </UpdateContext.Provider>
+      <UpdateContext.Provider value={update}>
         <div className="w-2/3">
-          <MaintenanceRequestForm properties={properties} updateM={updateM} setUpdateM={setUpdateM} />
+          <MaintenanceRequestForm properties={properties} update={update} setUpdate={setUpdate} />
         </div>
-      </UpdateContextM.Provider>
+      </UpdateContext.Provider>
       </div>
     </div>
   )

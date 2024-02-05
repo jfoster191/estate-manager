@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as propertiesAPI from "../../utilities/properties-api";
 import * as unitsAPI from "../../utilities/units-api";
 
-export default function AddTenantsForm({properties}){
+export default function AddTenantsForm({properties, update, setUpdate}){
   const [formData, setFormData] = useState({
     property: null,
     unit: null,
@@ -17,6 +17,8 @@ export default function AddTenantsForm({properties}){
   async function handleSubmit(evt){
     evt.preventDefault()
     const tenant = await unitsAPI.addTenant(formData)
+    if(update === ""){ setUpdate(null) }
+    else{ setUpdate("") }
   }
 
   async function handleChange(evt){

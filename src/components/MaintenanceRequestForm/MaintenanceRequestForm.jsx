@@ -2,7 +2,7 @@ import { useState } from "react";
 import DatepickerR from "react-tailwindcss-datepicker";
 import * as propertiesAPI from '../../utilities/properties-api';
 
-export default function MaintenanceRequestForm ({properties, updateM, setUpdateM}){  
+export default function MaintenanceRequestForm ({properties, update, setUpdate}){  
   const [formData, setFormData] = useState({
     property: '',
     title: '',
@@ -36,8 +36,8 @@ export default function MaintenanceRequestForm ({properties, updateM, setUpdateM
     evt.preventDefault();
     // setCurrentPage(currentPage+1)
     await propertiesAPI.addMaintenanceRequest(formData);
-    if(updateM === ""){ setUpdateM(null) }
-    else{ setUpdateM("") } 
+    if(update === ""){ setUpdate(null) }
+    else{ setUpdate("") } 
   }
 
   return (
