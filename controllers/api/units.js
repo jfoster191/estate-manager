@@ -43,7 +43,6 @@ async function addServiceRequest(req, res){
 }
 
 async function create (req, res){
-  console.log(req.body, req.file)
   try {
     const unit = await Unit.create({
       leaseStart: req.body.leaseStart,
@@ -70,7 +69,6 @@ async function create (req, res){
           ContentType: inputFile.mimetype,
         })
         const filePath = `https://${process.env.S3_BUCKET}.s3.amazonaws.com/${req.body.unitNum}-${inputFile.originalname.replace(" ", "")}`
-        console.log(filePath)
         try {
           const response = await s3.send(command)
           console.log(response)
@@ -97,7 +95,6 @@ async function updateUnit(req, res){
   if(req.body.dates.startDate) updates.leaseStart = req.body.dates.startDate
   if(req.body.amount) updates.amount = req.body.amount
   if(req.body.dueDay) updates.dueDay = req.body.dueDay
-  console.log(updates)
   try {
     const unit = await Unit.findByIdAndUpdate(req.body.unit, updates)
     if(unit.leaseStart){
@@ -155,7 +152,6 @@ function calcAndSetRent(d1, d2, dueDay, unit){
   const d2Y = d2.getFullYear()
   const d1M = d1.getMonth()
   const d2M = d2.getMonth()
-  console.log(d1M, d2M)
   let year = d1Y
   let month = d1M+1
   const monthsDiff = (d2M+12*d2Y)-(d1M+12*d1Y)

@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react"
-import * as unitsAPI from "../../utilities/units-api"
-
 export default function UpcomingRent({properties}){
   let units = []
   let indivUnits = []

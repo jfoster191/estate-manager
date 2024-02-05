@@ -1,5 +1,4 @@
 import { useState } from "react";
-import DatepickerR from "react-tailwindcss-datepicker";
 import * as propertiesAPI from '../../utilities/properties-api';
 
 export default function MaintenanceRequestForm ({properties, update, setUpdate}){  
@@ -7,34 +6,18 @@ export default function MaintenanceRequestForm ({properties, update, setUpdate})
     property: '',
     title: '',
     comment: '',
-    // dateResolved: null,
-    // repairCost: '',
-    // amount: '',
-    // dueDate: null
   })
-
-  const [value, setValue] = useState({
-    startDate: null, //new Date(),
-    endDate: null, //new Date().setMonth(11)
-  });
-  const handleValueChange = newValue => {
-    //console.log("newValue:", newValue);
-    setValue(newValue);
-  };
 
   function handleChange(evt){
     setFormData({
       ...formData,
       [evt.target.name]: evt.target.value,
-      // dateResolved: value,
-      // currentProperty: currentProperty,
       error: '',
     })
   }
 
   async function handleSubmit(evt){
     evt.preventDefault();
-    // setCurrentPage(currentPage+1)
     await propertiesAPI.addMaintenanceRequest(formData);
     if(update === ""){ setUpdate(null) }
     else{ setUpdate("") } 
@@ -66,23 +49,6 @@ export default function MaintenanceRequestForm ({properties, update, setUpdate})
           <label className="text-smokeyTopaz text-xl p-2">Comment/Details</label>
           <textarea className="border border-grey rounded h-24 p-1" type="text" name="comment" value={formData.comment} onChange={handleChange} />
         </div>
-
-        {/* <div className="text-smokeyTopaz text-xl">Date Resolved</div>
-          <div>
-            <DatepickerR
-            primaryColor="red"
-            useRange={false}
-            asSingle={true}
-            popoverDirection="down"
-            value={value} 
-            onChange={handleValueChange}
-            />
-        </div>
-
-        <div>
-          <label className="text-smokeyTopaz text-xl p-2">Repair Cost</label>
-          <input placeholder='Enter Value: 00.00' className="border border-grey rounded" type="number" name="amount" value={formData.amount} onChange={handleChange} />
-        </div> */}
 
           <button className="text-smokeyTopaz hover:text-white border border-grey rounded shadow-md from-smokeyTopaz hover:bg-gradient-to-br mt-10" type="submit">Submit</button>
 

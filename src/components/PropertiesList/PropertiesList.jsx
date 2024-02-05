@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as propertiesAPI from "../../utilities/properties-api";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function PropertiesList({setShowAddProperty, setCurrentProperty}){
   const [properties, setProperties] = useState([])

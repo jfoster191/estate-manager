@@ -4,9 +4,9 @@ import * as propertiesAPI from "../../utilities/properties-api";
 export default function MaintenanceList(){
   const [properties, setProperties] = useState([])
 
-  const [formData, setFormData] = useState({
-    repairStatus: ''
-  })
+  // const [formData, setFormData] = useState({
+  //   repairStatus: ''
+  // })
 
     useEffect(function(){
     async function getProperties(){
@@ -22,16 +22,16 @@ export default function MaintenanceList(){
   })
   const flatRequests = requests.flat(requests.length- 1)
 
-  function handleChange(evt){
-    setFormData({
-      ...formData,
-      [evt.target.name]: evt.target.value,
-      error: '',
-    })
-  }
-  async function handleSubmit(evt){
-    evt.preventDefault()
-  }
+  // function handleChange(evt){
+  //   setFormData({
+  //     ...formData,
+  //     [evt.target.name]: evt.target.value,
+  //     error: '',
+  //   })
+  // }
+  // async function handleSubmit(evt){
+  //   evt.preventDefault()
+  // }
 
   return (
     <div className="bg-white border border-grey shadow-md rounded p-2 h-[30.5rem]">

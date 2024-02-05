@@ -3,7 +3,9 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./node_modules/tailwind-datepicker-react/dist/**/*.js",
-    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js"
+    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
+    "./node_modules/flowbite/**/*.js",
+    "./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
     colors: {
@@ -19,12 +21,11 @@ module.exports = {
     },
     extend: {
       display: ["group-hover", "group-click"],
-      // height: {
-      //   ''
-      // },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
   darkMode: 'class',
 }
 

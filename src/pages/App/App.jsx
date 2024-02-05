@@ -12,7 +12,6 @@ import ServicePage from '../ServicePage/ServicePage'
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-services';
 
-
 function App() {
   const [ user, setUser ] = useState(getUser());
   const [properties, setProperties] = useState([])
@@ -26,7 +25,7 @@ function App() {
   }, [])
 
   return (
-    <main className="App bg-hunter h-full">
+    <main className="App bg-hunter h-full w-full">
       { user ?
       <>
         <NavBar user={user} setUser={setUser} setProperties={setProperties} />

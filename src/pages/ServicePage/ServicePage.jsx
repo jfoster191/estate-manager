@@ -10,8 +10,8 @@ export default function ServicePage({properties}){
         <h1 className='text-3xl font-bold'>Service Page</h1>
       <div className="flex mt-6 justify-center gap-4 h-[30rem]">
         <UpdateContext.Provider value={update}>
-        <ServiceRequestForm properties={properties} update={update} setUpdate={setUpdate}  />
         <ServiceList />
+        <ServiceRequestForm properties={properties} update={update} setUpdate={setUpdate}  />
         </UpdateContext.Provider>
       </div>
     </div>

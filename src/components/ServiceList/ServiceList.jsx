@@ -18,7 +18,7 @@ export default function ServiceList(){
     }
   })
   const flatServices = services.flat(services.length-1)
-  console.log(flatServices)
+
 
   return (
     <div className="bg-white border border-grey shadow-md rounded p-2 h-[30.5rem]">

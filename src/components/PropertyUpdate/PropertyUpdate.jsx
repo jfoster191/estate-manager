@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
-import TenantsList from "../../components/TenantsList/TenantsList"
 import * as propertiesAPI from "../../utilities/properties-api";
 import * as unitsAPI from "../../utilities/units-api";
 

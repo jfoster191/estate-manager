@@ -16,7 +16,7 @@ export default function AddTenantsForm({properties, update, setUpdate}){
 
   async function handleSubmit(evt){
     evt.preventDefault()
-    const tenant = await unitsAPI.addTenant(formData)
+    await unitsAPI.addTenant(formData)
     if(update === ""){ setUpdate(null) }
     else{ setUpdate("") }
   }
